@@ -32,11 +32,8 @@ public class CardController {
     }
 
     @GetMapping("/owner")
-    public Card getCardByOwner(@RequestParam String firstName,
-                               @RequestParam String surName,
-                               @RequestParam String familyName) {
-        return cardService.getCardByOwner(firstName, surName, familyName);
-    }
+    public Card getCardByOwner(@RequestBody Student student) {
+        return cardService.getCardByOwner(student.getFirstName(), student.getSurName(), student.getFamilyName());
 
     @GetMapping("/id/{id}")
     public Card getCardById(@PathVariable UUID id) {
